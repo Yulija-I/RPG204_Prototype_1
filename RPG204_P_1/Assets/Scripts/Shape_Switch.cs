@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Shape_Switch : MonoBehaviour
 {
-    public GameObject[] shapes;// different shapes
-    
+    public GameObject[] shapes;   // Different shapes
+    public int RandomNumber;  // random number
+    public int ObjCount = 0;  // object count
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,17 +20,34 @@ public class Shape_Switch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //or(int i = 0; i <=shapes.Length; i++)
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            // On space button press generate random shapes
-            for (int i = 0; i <= shapes.Length; i++)
+            RandomNumber = Random.Range(0, 7);
+            // while loop
+            ObjCount = 0;
+            while(ObjCount < 7)
             {
-                int RandomNumber = Random.Range(0, shapes.Length);
-                Instantiate(shapes[RandomNumber],transform.position, Quaternion.identity);
-                
+                shapes[ObjCount].SetActive(false); //  deactivate the object
+                ObjCount += 1;
+
             }
+            shapes[RandomNumber].SetActive(true);  // active the object 
+
         }
+
+
+        ////or(int i = 0; i <=shapes.Length; i++)
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    // On space button press generate random shapes
+        //    for (int i = 0; i <= shapes.Length; i++)
+        //    {
+        //        int RandomNumber = Random.Range(0, shapes.Length);
+        //        Instantiate(shapes[RandomNumber],transform.position, Quaternion.identity);
+                
+        //    }
+        //}
         
        
         

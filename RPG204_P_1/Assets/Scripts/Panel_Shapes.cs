@@ -5,6 +5,10 @@ using UnityEngine;
 public class Panel_Shapes : MonoBehaviour
 {
     public GameObject[] Shape;
+    
+    public int RandomNumber;  // random number
+    public int ObjCount = 0;  // object count
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +25,18 @@ public class Panel_Shapes : MonoBehaviour
     }
     void RandomshapeGenerator()
     {
-        // generate the random shapes on the panel
-        int RandomNum = Random.Range(0, Shape.Length);
-        Instantiate(Shape[RandomNum], transform.position, Quaternion.identity);
-        
-       
+
+        RandomNumber = Random.Range(0, 7);
+        // while loop
+        ObjCount = 0;
+        while (ObjCount < 7)
+        {
+            Shape[ObjCount].SetActive(false); //  deactivate the object
+            ObjCount += 1;
+
+        }
+        Shape[RandomNumber].SetActive(true);  // active the object 
+
 
 
     }
